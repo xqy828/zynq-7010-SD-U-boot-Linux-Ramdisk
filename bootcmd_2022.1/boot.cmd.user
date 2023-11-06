@@ -1,0 +1,74 @@
+##############################################################
+# This is a boot script for U-Boot                           #
+# Gernerate boot.scr:                                        #
+# mkimage -c none -A arm -T script -d boot.cmd.user boot.scr #
+##############################################################
+## Please change the kernel offset and kernel zise if the kernel image size more
+## than 100MB and BOOT.BIN size more than 30MB 
+## kernel offset --> is the address of qspi which you want load the kernel image 
+## kernel size --> size of the kernel image in hex
+##############################################################
+dtb_addr=0x02000000
+ramdisk_addr=0x04000000
+fdt_addr=0x1000
+imageub_addr=0x10000000
+kernel_addr=0x02080000 #0x80000
+bitstream_addr=0x00100000
+bitstream_size=0x00080000
+kernel_offset=0x01E00200
+kernel_size=0x07800000
+kernel_type=image_ub
+
+for boot_target in ${boot_targets};
+    do
+        if test "${boot_target}" = "jtag" ; then
+            booti ${kernel_addr} - ${fdt_addr};
+            exit;
+        fi
+        if test "${boot_target}" = "mmc0" || test "${boot_target}" = "mmc1"; then
+            if test -e ${devtype} ${devnum}:${distro_bootpart} /image.ub; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} ${imageub_addr} image.ub;
+                bootm ${imageub_addr};
+                exit;
+            fi
+#####################################bit stream########################################
+            if test -e ${devtype} ${devnum}:${distro_bootpart} /FPGA_TOP.bit.bin; then
+                load ${devtype} ${devnum}:${distro_bootpart} ${bitstream_addr} FPGA_TOP.bit.bin;
+                fpga loadb ${devnum}:${distro_bootpart} ${bitstream_addr} ${bitstream_size}
+                exit;
+            fi
+#####################################kernel image######################################
+            if test -e ${devtype} ${devnum}:${distro_bootpart} /uImage; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr} uImage;
+                exit;
+            fi
+#####################################kernel dtb########################################
+            if test -e ${devtype} ${devnum}:${distro_bootpart} /devicetree.dtb; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} ${dtb_addr} devicetree.dtb;
+                exit;
+            fi
+#####################################ramdisk###########################################
+            if test -e ${devtype} ${devnum}:${distro_bootpart} /uramdisk.image.gz; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} ${ramdisk_addr} uramdisk.image.gz;
+                bootm ${kernel_addr} ${ramdisk_addr} ${dtb_addr};
+                exit;
+            fi
+            bootm ${kernel_addr} - ${dtb_addr};
+            exit;
+        fi
+        if test "${boot_target}" = "xspi0"; then
+            sf probe 0 0 0;
+            if test "${kernel_type}" = "uimage.ub"; then
+                sf read ${imageub_addr} ${kernel_offset} ${kernel_size};
+                bootm ${imageub_addr};
+                exit;
+            fi;
+            if test "${kernel_type}" = "Image"; then 
+                sf read ${kernel_addr} ${kernel_offset} ${kernel_size};
+                bootm ${kernel_addr} - ${fdt_addr};
+                exit;
+            fi;
+            exit;
+        fi;
+    done
+
