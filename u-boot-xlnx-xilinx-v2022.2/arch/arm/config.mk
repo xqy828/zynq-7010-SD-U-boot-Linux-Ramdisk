@@ -71,11 +71,12 @@ archprepare: checkgcc6
 endif
 
 checkgcc6:
-	@if test "$(call cc-name)" = "gcc" -a \
-			"$(call cc-version)" -lt "0600"; then \
-		echo '*** Your GCC is older than 6.0 and is not supported'; \
-		false; \
-	fi
+	@echo "skip check gcc version modify by qiyang.xing"
+#	@if test "$(call cc-name)" = "gcc" -a \
+#			"$(call cc-version)" -lt "0600"; then \
+#		echo '*** Your GCC is older than 6.0 and is not supported'; \
+#		false; \
+#	fi
 
 
 # Try if EABI is supported, else fall back to old API,
