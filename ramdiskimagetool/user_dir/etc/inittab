@@ -1,0 +1,20 @@
+::sysinit:/etc/init.d/rcS
+
+# /bin/ash
+# 
+# Start an askfirst shell on the serial ports
+# and the tty0 for when the video is being used
+
+#ttyPS0::respawn:-/bin/ash
+#tty0::respawn:-/bin/ash
+###########user add##########################
+#::respawn:/sbin/getty -L ttyPS0 115200 vt100
+::sysinit:/bin/hostname zynq
+::respawn:-/bin/login
+# What to do when restarting the init process
+
+::restart:/sbin/init
+
+# What to do before rebooting
+
+::shutdown:/bin/umount -a -r

@@ -1,0 +1,57 @@
+#!/bin/sh
+
+echo "Starting rcS..."
+
+echo "++ Mounting filesystem"
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t tmpfs none /tmp
+
+mkdir -p /dev/pts
+mkdir -p /dev/i2c
+mount -a
+
+echo "++ Setting up mdev"
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+echo "++ Starting mdev daemon"
+mdev -d
+
+# the device driver is not creating this node, so for now
+# create the devcfg device node manually
+
+if [ ! -e /dev/xdevcfg ]
+then
+	mknod /dev/xdevcfg c 259 0
+fi
+echo "++ Random Init"
+rngd -r/dev/urandom
+
+echo "++ Config static IP 192.168.127.10"
+ifconfig eth0 down
+ifconfig eth0 192.168.127.10 up
+
+echo "++ Starting telnet daemon"
+telnetd -l /bin/sh
+
+#echo "++ Starting http daemon"
+#httpd -h /var/www
+
+echo "++ Starting ftp daemon"
+tcpsvd 0 21 ftpd -w /var/ftp &
+
+echo "++ Starting ssh daemon"
+chmod 600 /etc/ssh/ssh_host_*
+/usr/sbin/sshd
+
+echo "++ Starting syslog daemon"
+syslogd -O /var/log/app.log
+
+if [ -f /mnt/init.sh ]
+then
+	echo "++ Running user script init.sh from SD Card"
+     	source /mnt/init.sh
+fi
+/bin/hostname -F /etc/hostname
+echo "rcS Complete"
+echo "Welcome to Zynq"
