@@ -1,8 +1,8 @@
 #!/bin/bash
 start_time=$(date +%s)
 export ARCH=arm
-export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
-export PATH=$PATH:/opt/Petalinux/petalinux-v2015.4-final/tools/linux-i386/arm-xilinx-linux-gnueabi/bin
+export CROSS_COMPILE=arm-linux-gnueabihf-
+export PATH=$PATH:/opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin
 echo make distclen
 make distclean
 echo make ebaz4205_defconfig
