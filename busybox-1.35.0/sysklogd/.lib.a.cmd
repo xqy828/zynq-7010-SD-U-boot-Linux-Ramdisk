@@ -1,1 +1,1 @@
-cmd_sysklogd/lib.a := rm -f sysklogd/lib.a; arm-xilinx-linux-gnueabi-ar  rcs sysklogd/lib.a sysklogd/klogd.o sysklogd/logread.o sysklogd/syslogd_and_logger.o
+cmd_sysklogd/lib.a := rm -f sysklogd/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs sysklogd/lib.a sysklogd/klogd.o sysklogd/logread.o sysklogd/syslogd_and_logger.o

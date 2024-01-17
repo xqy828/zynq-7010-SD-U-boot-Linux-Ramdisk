@@ -1,1 +1,1 @@
-cmd_debianutils/lib.a := rm -f debianutils/lib.a; arm-xilinx-linux-gnueabi-ar  rcs debianutils/lib.a debianutils/pipe_progress.o debianutils/run_parts.o debianutils/start_stop_daemon.o debianutils/which.o
+cmd_debianutils/lib.a := rm -f debianutils/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs debianutils/lib.a debianutils/pipe_progress.o debianutils/run_parts.o debianutils/start_stop_daemon.o debianutils/which.o

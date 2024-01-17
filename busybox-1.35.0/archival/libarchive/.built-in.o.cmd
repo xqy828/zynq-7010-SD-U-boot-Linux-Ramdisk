@@ -1,1 +1,1 @@
-cmd_archival/libarchive/built-in.o :=  rm -f archival/libarchive/built-in.o; arm-xilinx-linux-gnueabi-ar rcs archival/libarchive/built-in.o
+cmd_archival/libarchive/built-in.o :=  rm -f archival/libarchive/built-in.o; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar rcs archival/libarchive/built-in.o

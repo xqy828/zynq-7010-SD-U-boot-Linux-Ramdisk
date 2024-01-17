@@ -1,1 +1,1 @@
-cmd_modutils/lib.a := rm -f modutils/lib.a; arm-xilinx-linux-gnueabi-ar  rcs modutils/lib.a modutils/modinfo.o modutils/modprobe-small.o modutils/modutils.o
+cmd_modutils/lib.a := rm -f modutils/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs modutils/lib.a modutils/modinfo.o modutils/modprobe-small.o modutils/modutils.o

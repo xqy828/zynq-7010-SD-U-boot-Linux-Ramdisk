@@ -1,1 +1,1 @@
-cmd_util-linux/volume_id/built-in.o :=  rm -f util-linux/volume_id/built-in.o; arm-xilinx-linux-gnueabi-ar rcs util-linux/volume_id/built-in.o
+cmd_util-linux/volume_id/built-in.o :=  rm -f util-linux/volume_id/built-in.o; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar rcs util-linux/volume_id/built-in.o

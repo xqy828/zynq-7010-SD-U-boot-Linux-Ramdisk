@@ -1,1 +1,1 @@
-cmd_findutils/lib.a := rm -f findutils/lib.a; arm-xilinx-linux-gnueabi-ar  rcs findutils/lib.a findutils/find.o findutils/grep.o findutils/xargs.o
+cmd_findutils/lib.a := rm -f findutils/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs findutils/lib.a findutils/find.o findutils/grep.o findutils/xargs.o

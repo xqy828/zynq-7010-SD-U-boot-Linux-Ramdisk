@@ -1,1 +1,1 @@
-cmd_shell/lib.a := rm -f shell/lib.a; arm-xilinx-linux-gnueabi-ar  rcs shell/lib.a shell/ash.o shell/ash_ptr_hack.o shell/cttyhack.o shell/hush.o shell/match.o shell/math.o shell/random.o shell/shell_common.o
+cmd_shell/lib.a := rm -f shell/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs shell/lib.a shell/ash.o shell/ash_ptr_hack.o shell/cttyhack.o shell/hush.o shell/match.o shell/math.o shell/random.o shell/shell_common.o

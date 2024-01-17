@@ -1,1 +1,1 @@
-cmd_networking/libiproute/built-in.o :=  rm -f networking/libiproute/built-in.o; arm-xilinx-linux-gnueabi-ar rcs networking/libiproute/built-in.o
+cmd_networking/libiproute/built-in.o :=  rm -f networking/libiproute/built-in.o; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar rcs networking/libiproute/built-in.o

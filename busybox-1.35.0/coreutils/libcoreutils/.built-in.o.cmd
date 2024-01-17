@@ -1,1 +1,1 @@
-cmd_coreutils/libcoreutils/built-in.o :=  rm -f coreutils/libcoreutils/built-in.o; arm-xilinx-linux-gnueabi-ar rcs coreutils/libcoreutils/built-in.o
+cmd_coreutils/libcoreutils/built-in.o :=  rm -f coreutils/libcoreutils/built-in.o; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar rcs coreutils/libcoreutils/built-in.o

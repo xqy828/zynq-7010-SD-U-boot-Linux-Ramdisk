@@ -1,1 +1,1 @@
-cmd_mailutils/built-in.o :=  rm -f mailutils/built-in.o; arm-xilinx-linux-gnueabi-ar rcs mailutils/built-in.o
+cmd_mailutils/built-in.o :=  rm -f mailutils/built-in.o; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar rcs mailutils/built-in.o

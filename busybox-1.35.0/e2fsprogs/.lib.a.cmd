@@ -1,1 +1,1 @@
-cmd_e2fsprogs/lib.a := rm -f e2fsprogs/lib.a; arm-xilinx-linux-gnueabi-ar  rcs e2fsprogs/lib.a e2fsprogs/chattr.o e2fsprogs/e2fs_lib.o e2fsprogs/fsck.o e2fsprogs/lsattr.o
+cmd_e2fsprogs/lib.a := rm -f e2fsprogs/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs e2fsprogs/lib.a e2fsprogs/chattr.o e2fsprogs/e2fs_lib.o e2fsprogs/fsck.o e2fsprogs/lsattr.o

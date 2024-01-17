@@ -2,7 +2,7 @@
  * Automatically generated C config: don't edit
  * Busybox version: 1.35.0
  */
-#define AUTOCONF_TIMESTAMP "2022-05-05 20:15:55 CST"
+#define AUTOCONF_TIMESTAMP "2024-01-07 06:35:29 UTC"
 
 #define CONFIG_HAVE_DOT_CONFIG 1
 #define ENABLE_HAVE_DOT_CONFIG 1
@@ -248,7 +248,7 @@
 #define ENABLE_FEATURE_SHARED_BUSYBOX 0
 #define IF_FEATURE_SHARED_BUSYBOX(...)
 #define IF_NOT_FEATURE_SHARED_BUSYBOX(...) __VA_ARGS__
-#define CONFIG_CROSS_COMPILER_PREFIX "arm-xilinx-linux-gnueabi-"
+#define CONFIG_CROSS_COMPILER_PREFIX "arm-linux-gnueabihf-"
 #define ENABLE_CROSS_COMPILER_PREFIX 1
 #ifdef MAKE_SUID
 # define IF_CROSS_COMPILER_PREFIX(...) __VA_ARGS__ "CONFIG_CROSS_COMPILER_PREFIX"

@@ -1,1 +1,1 @@
-cmd_runit/lib.a := rm -f runit/lib.a; arm-xilinx-linux-gnueabi-ar  rcs runit/lib.a runit/chpst.o runit/runsv.o runit/runsvdir.o runit/sv.o runit/svlogd.o
+cmd_runit/lib.a := rm -f runit/lib.a; /opt/Petalinux/2018.3/tools/linux-i386/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-ar  rcs runit/lib.a runit/chpst.o runit/runsv.o runit/runsvdir.o runit/sv.o runit/svlogd.o
